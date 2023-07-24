@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
-import logo from "./../assets/react.svg";
+import logo from "./../assets/logo.png";
 import clipboardCopy from "clipboard-copy";
+
 export const CopyImageToClipboard = () => {
   const canvasRef = useRef(null);
   const mydivRef = useRef(null);
@@ -24,15 +25,21 @@ export const CopyImageToClipboard = () => {
 
     // Convert canvas content to a data URL
     setImgUrl(canvas.toDataURL("image/png"));
+    console.log(imgUrl);
     setText(divContent);
+
     // Copy the data URL to the clipboard
     navigator.clipboard.writeText(imgUrl).then(() => {
       console.log("Image copied to clipboard!");
     });
+    // navigator.clipboard.write(imgUrl).then(() => {
+    //   console.log("Copied");
+    // });
     clipboardCopy(imgUrl).then(() => {});
   };
 
   const handlePasteClick = () => {
+    console.log(imgUrl);
     showImage(imgUrl);
     showText(text);
   };

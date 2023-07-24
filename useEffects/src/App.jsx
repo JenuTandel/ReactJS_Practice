@@ -6,6 +6,9 @@ import { UseReducer1 } from "./UseReducer/UseReducer1";
 import { UseReducer2 } from "./UseReducer/UseReducer2";
 import { CopyToClipboard } from "./CopyToClipboard/CopyToClipboard";
 import { CopyImageToClipboard } from "./CopyToClipboard/CopyImageToClipboard";
+import { CopyImage } from "./CopyToClipboard/CopyImage";
+import { CopyBoth } from "./CopyToClipboard/CopyBoth";
+import { DynamicData } from "./CopyToClipboard/DynamicData";
 
 function App() {
   return (
@@ -14,7 +17,10 @@ function App() {
       {/* <UseReducer1></UseReducer1> */}
       {/* <UseReducer2></UseReducer2> */}
       {/* <CopyToClipboard></CopyToClipboard> */}
-      <CopyImageToClipboard></CopyImageToClipboard>
+      {/* <CopyImageToClipboard></CopyImageToClipboard> */}
+      {/* <CopyImage></CopyImage> */}
+      {/* <CopyBoth></CopyBoth> */}
+      <DynamicData></DynamicData>
     </>
   );
 }
