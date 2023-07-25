@@ -59,7 +59,7 @@ export const DynamicData = () => {
     // Create an image element to hold the original logo image
     const imageLogo = new Image();
     imageLogo.src = imageLogoUrl;
-    imageLogo.height = 100;
+    imageLogo.height = 80;
     imageLogo.width = 100;
     imageLogo.style.objectFit = "cover";
 
@@ -72,7 +72,7 @@ export const DynamicData = () => {
 
     //main canvas
     const maincanvas = canvasRef.current;
-    maincanvas.width = 400;
+    maincanvas.width = 300;
     maincanvas.height = image.height + imageLogo.height;
     const mainctx = maincanvas.getContext("2d");
 
@@ -112,6 +112,7 @@ export const DynamicData = () => {
       mainctx.fillText(des, 120, maincanvas.height / 3 + 20);
       mainctx.fillText(contact, 120, maincanvas.height / 3 + 40);
       // Convert the canvas to a data URL
+      setCompositeImageUrl(maincanvas.toDataURL("image/png"));
     };
     imageLogo.onload = async () => {
       //create canvas for logo
@@ -121,10 +122,11 @@ export const DynamicData = () => {
       const ctxlogo = canvaslogo.getContext("2d");
       ctxlogo.drawImage(imageLogo, 0, 0);
       await mainctx.drawImage(canvaslogo, 0, image.height + 10);
+      setCompositeImageUrl(maincanvas.toDataURL("image/png"));
     };
-    setCompositeImageUrl(maincanvas.toDataURL("image/png"));
   };
   const copyTextAndImageToClipboard = async () => {
+    console.log(compositeImageUrl);
     if (compositeImageUrl !== null) {
       await navigator.clipboard.write([
         new ClipboardItem({ "image/png": dataURLToBlob(compositeImageUrl) }),
