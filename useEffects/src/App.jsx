@@ -9,6 +9,7 @@ import { CopyImageToClipboard } from "./CopyToClipboard/CopyImageToClipboard";
 import { CopyImage } from "./CopyToClipboard/CopyImage";
 import { CopyBoth } from "./CopyToClipboard/CopyBoth";
 import { DynamicData } from "./CopyToClipboard/DynamicData";
+import { TableDataCopy } from "./CopyToClipboard/TableDataCopy";
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
       {/* <CopyImageToClipboard></CopyImageToClipboard> */}
       {/* <CopyImage></CopyImage> */}
       {/* <CopyBoth></CopyBoth> */}
-      <DynamicData></DynamicData>
+      {/* <DynamicData></DynamicData> */}
+      <TableDataCopy></TableDataCopy>
     </>
   );
 }

@@ -15,7 +15,7 @@ export const CopyToClipboard = () => {
     textarea.select();
     document.execCommand("copy");
     document.body.removeChild(textarea);
-    document.body.removeChild(img);
+    // document.body.removeChild(img);
     setIsCopied(true);
     // Reset the "copied" state after a short delay (optional)
     setTimeout(() => setIsCopied(false), 2000);
@@ -29,7 +29,7 @@ export const CopyToClipboard = () => {
         onClick={() => {
           const clipboard = new Clipboard(".copy-image");
           clipboard.copy(logo);
-          setCopied(true);
+          setIsCopied(true);
         }}
       />
       <div ref={divRef} style={{ display: "flex", alignItems: "center" }}>
@@ -38,7 +38,9 @@ export const CopyToClipboard = () => {
           alt="Your Image"
           style={{ width: "100px", height: "100px" }}
         />
-        <p style={{ marginLeft: "10px" }}>React Logo</p>
+        <p style={{ marginLeft: "10px", fontSize: "20px", color: "green" }}>
+          React Logo
+        </p>
         <p>Jinal Tandel</p>
       </div>
       <button onClick={handleCopyClick}>

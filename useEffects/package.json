@@ -14,7 +14,8 @@
     "clipboard-polyfill": "^4.0.0",
     "react": "^18.2.0",
     "react-copy-to-clipboard": "^5.1.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "use-toggler": "^1.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.14",

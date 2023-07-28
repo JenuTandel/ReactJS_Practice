@@ -1,6 +1,8 @@
 import React, { useState, useRef, useReducer } from "react";
+import { UseToggler } from "use-toggler/UseToggler";
 
 export const DynamicData = () => {
+  const [isOn, setIsOn] = UseToggler(true);
   const [imgSrc, setImgSrc] = useState("");
   const initialValue = {
     name: "",
@@ -31,7 +33,7 @@ export const DynamicData = () => {
   };
   const [state, dispatch] = useReducer(reducer, initialValue);
 
-  const getBase64 = (file) => {
+  const getBase64 = async (file) => {
     return new Promise((resolve) => {
       let baseURL = "";
       let reader = new FileReader();
@@ -181,6 +183,13 @@ export const DynamicData = () => {
       </form>
       <canvas ref={canvasRef}></canvas>
       <button onClick={copyTextAndImageToClipboard}>Copy Text and Image</button>
+      <button
+        onClick={() => {
+          setIsOn((isOn) => !isOn);
+        }}
+      >
+        is Active {`${isOn}`}
+      </button>
     </div>
   );
 };
