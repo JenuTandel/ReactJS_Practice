@@ -6,8 +6,7 @@ export const TableDataCopy = () => {
   const tableRef = useRef(null);
   const divRef = useRef(null);
   const tdRef = useRef(null);
-  const spanRef = useRef(null);
-  const [imgSrc, setImgSrc] = useState("");
+  const logoRef = useRef(null);
   const initialValue = {
     name: "",
     designation: "",
@@ -39,7 +38,7 @@ export const TableDataCopy = () => {
   const [state, dispatch] = useReducer(reducer, initialValue);
 
   const getBase64 = (file) => {
-    return new Promise((resolve) => {
+    return new Promise(() => {
       let baseURL = "";
       let reader = new FileReader();
       reader.readAsDataURL(file);
@@ -91,6 +90,30 @@ export const TableDataCopy = () => {
       };
     });
   };
+
+  // const imageLogo = new Image();
+  // imageLogo.src = "../src/assets/rivetlogo.png";
+  // imageLogo.style.width = 100 + "%";
+  // imageLogo.style.height = 100 + "%";
+  // imageLogo.onload = function () {
+  //   // Create a canvas to manipulate the image
+  //   const canvasLogo = document.createElement("canvas");
+  //   canvasLogo.width = 55;
+  //   canvasLogo.height = 55;
+
+  //   // Get the canvas context
+  //   const ctxlogo = canvasLogo.getContext("2d");
+  //   ctxlogo.drawImage(imageLogo, 0, 0, 55, 55);
+
+  //   // // Convert the canvas data to a data URL (base64)
+  //   const imageDataURL1 = canvasLogo.toDataURL("image/png");
+  //   console.log(imageDataURL1);
+  //   // // Create a new image element with the circular image
+  //   const logo = document.createElement("img");
+  //   logo.src = imageDataURL1;
+  //   const td1 = logoRef.current;
+  //   td1.appendChild(canvasLogo);
+  // };
 
   const copyTable = () => {
     // Get the table container element
@@ -199,6 +222,7 @@ export const TableDataCopy = () => {
                 </div>
               </td>
               <td
+                colSpan={2}
                 style={{
                   fontSize: "16pt",
                   fontWeight: "500",
@@ -210,15 +234,23 @@ export const TableDataCopy = () => {
             </tr>
             <tr>
               <td style={{ fontSize: "12pt", textAlign: "left" }}>
-                {state.designation} |
-                <span style={{ color: "red" }}>{state.department}</span>
+                {state.designation} |{" "}
+                <span
+                  style={{
+                    color: "red",
+                  }}
+                >
+                  {state.department}
+                </span>
               </td>
             </tr>
             <tr>
               <td rowSpan={2}>
                 <img src={logo}></img>
               </td>
+              {/* <td rowSpan={2} ref={logoRef}></td> */}
               <td
+                colSpan={2}
                 style={{
                   cursor: "pointer",
                   fontSize: "10pt",
@@ -230,7 +262,7 @@ export const TableDataCopy = () => {
               </td>
             </tr>
             <tr>
-              <td style={{ fontSize: "10pt", textAlign: "left" }}>
+              <td colSpan={2} style={{ fontSize: "10pt", textAlign: "left" }}>
                 <span style={{ color: "red" }}>tel.</span>
                 {state.contact}
               </td>
